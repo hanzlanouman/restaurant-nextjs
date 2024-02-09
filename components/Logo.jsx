@@ -13,13 +13,13 @@ const Logo = () => {
     <Link href='/'>
       {/* write a text logo with all classes purple */}
       <h1
-        className={`h2 text-primary font-bold text-2xl dark:text-white cursor-pointer
+        className={`h2 text-primary font-bold text-3xl dark:text-white cursor-pointer tracking-tight xl:tracking-wider
        ${poppins.className}`}
       >
         South Kitchen
         <span
           className='
-          text-orange-600
+          text-sp_orange
           font-black
           text-4xl
           dark:text-primary

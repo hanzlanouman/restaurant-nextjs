@@ -4,13 +4,13 @@ import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 const links = [
   { path: '/', name: 'home' },
-  { path: '/menu', name: 'menu' },
   { path: '/about', name: 'about' },
   { path: '/book', name: 'book a table' },
 ];
 
 const Nav = ({ containerStyles, linkStyles, underlineStyles }) => {
   const path = usePathname();
+  console.log(path);
   return (
     <nav className={containerStyles}>
       {links.map((link, index) => {
@@ -18,7 +18,9 @@ const Nav = ({ containerStyles, linkStyles, underlineStyles }) => {
           <Link
             href={link.path}
             key={index}
-            className={`capitalize ${linkStyles}`}
+            className={`capitalize ${linkStyles} text-[19px]
+            
+            `}
           >
             {link.path === path && (
               <motion.span

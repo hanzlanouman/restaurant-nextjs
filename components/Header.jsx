@@ -8,6 +8,8 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Cart from './Cart';
 import { PersonStanding, Signal, User2 } from 'lucide-react';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 const Header = () => {
   const [header, setHeader] = useState(false);
@@ -16,7 +18,7 @@ const Header = () => {
 
   useEffect(() => {
     const scrollYPos = window.addEventListener('scroll', () => {
-      window.scrollY > 50 ? setHeader(true) : setHeader(false);
+      window.scrollY > 110 ? setHeader(true) : setHeader(false);
     });
 
     return () => window.removeEventListener('scroll', scrollYPos);
@@ -24,11 +26,13 @@ const Header = () => {
 
   return (
     <header
-      className={`${
+      className={` ${
         header
-          ? 'py-4 bg-white shadow-lg dark:bg-accent'
-          : 'py-6 dark:bg-transparent '
-      } sticky top-0 z-30 transition-all bg-transparent`}
+          ? 'xl:py-4 md:py-4 py-5 bg-zinc-900 shadow-lg dark:bg-accent'
+          : 'xl:py-4 md:py-4 py-5 dark:bg-transparent '
+      } sticky top-0 z-30 transition-all bg-transparent
+      ${pathname !== '/' && 'bg-zinc-900 shadow-lg dark:bg-accent'}
+      `}
     >
       <div className='container mx-auto text-white'>
         <div className='flex justify-between items-center'>
@@ -47,10 +51,20 @@ const Header = () => {
             </div>
           </div>
           <div className='hidden xl:flex xl:justify-center items-center gap-x-4 '>
-            <Cart isPage={true} />
+            <Link href='/menu'>
+              <Button
+                className='
+            bg-sp_orange text-white min-w-[166px] py-3 mr-6 rounded-full
+            hover:bg-primary transition-all duration-300 text-lg
+            '
+              >
+                Menu
+              </Button>
+            </Link>
+            <Cart isPage={true} className={`cursor-pointer`} />
             <User2
               size={24}
-              className='cursor-pointer'
+              className={`cursor-pointer `}
               onClick={() => console.log('user')}
             />
           </div>

@@ -4,6 +4,7 @@ import { ShoppingBag, X } from 'lucide-react';
 import Logo from './Logo';
 import CartItems from './CartItems';
 import { Button } from './ui/button';
+import { usePathname } from 'next/navigation';
 
 const cartItems = [
   {
@@ -21,7 +22,7 @@ const cartItems = [
   {
     item: 'Pizza',
     price: 12,
-    img: '/images/pizza.jpg',
+    img: '/images/piza.avif',
     quantity: 3,
   },
   {
@@ -81,6 +82,7 @@ const cartItems = [
 ];
 
 const Cart = ({ isPage }) => {
+  const path = usePathname();
   return (
     <div>
       <Sheet
@@ -88,12 +90,13 @@ const Cart = ({ isPage }) => {
         w-full
         h-full
         container
+       
         '
       >
         <SheetTrigger asChild>
-          <ShoppingBag className='cursor-pointer' />
+          <ShoppingBag className={`cursor-pointer`} />
         </SheetTrigger>
-        <SheetContent side={isPage ? 'right' : 'left'}>
+        <SheetContent side={isPage ? 'right' : 'left'} className=''>
           <div className='flex flex-col items-center justify-between h-full py-8 '>
             <div className='text-orange-600 flex flex-col items-center gap-y-5'>
               <Logo />

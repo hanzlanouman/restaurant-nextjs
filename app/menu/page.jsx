@@ -1,7 +1,12 @@
 import React from 'react';
+import Menu from '@/components/Menu';
 
-const Menu = () => {
-  return <div>Menu</div>;
+const MenuPage = () => {
+  return (
+    <div>
+      <Menu />
+    </div>
+  );
 };
 
-export default Menu;
+export default MenuPage;
