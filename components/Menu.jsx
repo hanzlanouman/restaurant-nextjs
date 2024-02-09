@@ -86,6 +86,7 @@ const menuItems = [
     description: 'Fresh sushi made with the finest ingredients',
     price: 15.99,
     image: '/images/sushi.jpg',
+    offer: '20% off',
   },
   {
     id: 11,
@@ -97,7 +98,7 @@ const menuItems = [
   {
     id: 12,
     title: 'Burger',
-    description: 'Juicy burger with a variety of toppings',
+    description: 'Juicy burger ',
     price: 10.99,
     image: '/images/burger.jpg',
   },

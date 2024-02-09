@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { Card, CardHeader } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Heart, ShoppingCart, ShoppingCartIcon } from 'lucide-react';
@@ -18,7 +18,7 @@ const MenuCard = ({ menuItem }) => {
   };
   return (
     <Card className='border-none bg-zinc-900 shadow-2xl shadow-zinc-800'>
-      <CardHeader className='p-0'>
+      <CardHeader className='p-0 relative'>
         <div
           className=' flex mx-auto
           h-[200px] max-w-[600px] w-full
@@ -34,50 +34,54 @@ const MenuCard = ({ menuItem }) => {
             alt='project image'
             priority
           />
-        </div>
-      </CardHeader>
-      <div className=' p-4 flex flex-col items-stretch  justify-between'>
-        <Badge className='uppercase text-xs font-medium mb-2 absolute top-2 left-2'>
-          40% off
-        </Badge>
-        <div className='flex items-start justify-between'>
-          <h4 className='h4 text-white text-lg mb-3 '>{menuItem.title}</h4>
-          {craving ? (
-            <RiHeart2Fill
-              className='text-sp_orange cursor-pointer'
-              size={24}
-              onClick={() => setCraving(false)}
-            />
-          ) : (
-            <RiHeart2Line
-              className='text-sp_orange cursor-pointer'
-              size={24}
-              onClick={() => setCraving(true)}
-            />
+          {menuItem.offer && (
+            <Badge className='uppercase text-xs font-semibold mb-2 absolute top-2 left-2 bg-sp_orange'>
+              {menuItem.offer}
+            </Badge>
           )}
         </div>
+      </CardHeader>
+      <CardContent className='flex flex-col items-stretch '>
+        <div className='py-4 flex flex-col items-stretch justify-between'>
+          <div className='flex items-stretch justify-between'>
+            <h4 className='h4 text-white text-lg mb-3 '>{menuItem.title}</h4>
+            {craving ? (
+              <RiHeart2Fill
+                className='text-sp_orange cursor-pointer'
+                size={24}
+                onClick={() => setCraving(false)}
+              />
+            ) : (
+              <RiHeart2Line
+                className='text-sp_orange cursor-pointer'
+                size={24}
+                onClick={() => setCraving(true)}
+              />
+            )}
+          </div>
 
-        <p
-          className='text-white text-base 
+          <p
+            className='text-white text-base 
           line-clamp-3
         '
-        >
-          {menuItem.description}
-        </p>
-      </div>
+          >
+            {menuItem.description}
+          </p>
+        </div>
 
-      <div className='flex justify-between items-center p-4 '>
-        <p className='text-white text-lg font-semibold tracking-wider'>
-          {menuItem.price}$
-        </p>
+        <div className='flex justify-between items-center  py-2'>
+          <p className='text-white text-lg font-semibold tracking-wider'>
+            {menuItem.price}$
+          </p>
 
-        {/* <Button>Add to Cart</Button> */}
-        <RiShoppingCart2Line
-          size={28}
-          className='text-primary cursor-pointer'
-          onClick={() => addToCart(menuItem)}
-        />
-      </div>
+          {/* <Button>Add to Cart</Button> */}
+          <RiShoppingCart2Line
+            size={28}
+            className='text-primary cursor-pointer'
+            onClick={() => addToCart(menuItem)}
+          />
+        </div>
+      </CardContent>
     </Card>
   );
 };
