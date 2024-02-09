@@ -29,10 +29,8 @@ const gallery = [
 ];
 const Footer = () => {
   return (
-    <footer
-      className={`w-full bg-[#0d0d0e] py-2 text-white ${outFit.className}`}
-    >
-      <div className='flex border-t border-primary  container justify-between'>
+    <footer className={`w-full bg-[#0d0d0e] text-white ${outFit.className}`}>
+      <div className='flex  container justify-between'>
         <div className='flex flex-col gap-y-12 justify-between items-start xl:items-center gap-x-[10rem] xl:flex-row md:flex-col md:justify-center py-10 xl:py-0 '>
           <div className='flex flex-col items-start gap-y-4 max-w-[500px] '>
             <div>

@@ -13,7 +13,6 @@ export default function Home() {
       <Deals />
       <BookTable />
       <About />
-      <Footer />
     </main>
   );
 }

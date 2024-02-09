@@ -10,7 +10,7 @@ const ubuntu = Montserrat({
 const About = () => {
   return (
     <section
-      className={`${ubuntu.className} flex flex-col bg-[#0d0d0e] text-white mt-[-5px] `}
+      className={`${ubuntu.className} flex flex-col bg-zinc-800 text-white mt-[-5px] `}
     >
       <div className='container mx-auto pb-10'>
         <div className='flex-col items-center'>

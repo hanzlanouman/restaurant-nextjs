@@ -1,6 +1,15 @@
 import React from 'react';
 import { Ubuntu } from 'next/font/google';
 import MenuList from './MenuList';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './ui/select';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 
 const ubuntu = Ubuntu({
   subsets: ['latin'],
@@ -119,7 +128,25 @@ const Menu = () => {
             </p>
           </div>
           {/* Menu Search, Filter Sort Options */}
-          <div className='flex gap-x-2 justify-center'></div>
+          <div className='flex gap-x-3 justify-center text-white p-5 flex-col xl:flex-row items-end xl:items-start gap-y-3'>
+            <Input
+              placeholder='Search for a dish'
+              className='bg-zinc-900 text-white
+                border-none w-full rounded-lg p-5 focus:outline-none focus:ring-0 focus:ring-sp_orange focus:ring-opacity-50 transition-all duration-300 min-w-[300px] xl:min-w-[400px]
+              '
+            />
+
+            <Select className='min-w-[400px]'>
+              <SelectTrigger className='w-full bg-zinc-900 min-w-[120px] max-w-[120px] text-sm border-none'>
+                <SelectValue placeholder='Sort' className='' />
+              </SelectTrigger>
+              <SelectContent className='bg-zinc-900 text-white min-w-[200px] max-w-[200px] '>
+                <SelectItem value='light'>Price: Low to High</SelectItem>
+                <SelectItem value='dark'>Price: High to low</SelectItem>
+                <SelectItem value='system'>Hottest</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           {/* Menu List */}
           <div>
             {/* Menu Cards */}

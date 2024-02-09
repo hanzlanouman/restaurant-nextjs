@@ -29,7 +29,7 @@ const Header = () => {
       className={` ${
         header
           ? 'xl:py-4 md:py-4 py-5 bg-zinc-900 shadow-lg dark:bg-accent'
-          : 'xl:py-4 md:py-4 py-5 dark:bg-transparent '
+          : 'xl:py-4 md:py-4 py-5 dark:bg-transparent  '
       } sticky top-0 z-30 transition-all bg-transparent
       ${pathname !== '/' && 'bg-zinc-900 shadow-lg dark:bg-accent'}
       `}
