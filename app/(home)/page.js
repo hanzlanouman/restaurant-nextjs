@@ -5,8 +5,11 @@ import Hero from '@/components/Hero';
 import { Button } from '@/components/ui/button';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
+import { currentUser } from '@clerk/nextjs';
 
-export default function Home() {
+const Home = async () => {
+  // const { userId } = auth();
+
   return (
     <main className='mx-auto'>
       <Hero />
@@ -15,4 +18,6 @@ export default function Home() {
       <About />
     </main>
   );
-}
+};
+
+export default Home;

@@ -10,6 +10,7 @@ import {
   RiHeart2Line,
   RiShoppingCart2Line,
 } from 'react-icons/ri';
+import MenuItemDialogue from './MenuItemDialogue';
 
 const MenuCard = ({ menuItem }) => {
   const [craving, setCraving] = useState(false);
@@ -17,7 +18,7 @@ const MenuCard = ({ menuItem }) => {
     console.log(item);
   };
   return (
-    <Card className='border-none bg-zinc-900 shadow-2xl shadow-zinc-800'>
+    <Card className='border-none bg-zinc-900 shadow-2xl shadow-zinc-800 text-left'>
       <CardHeader className='p-0 relative'>
         <div
           className=' flex mx-auto
@@ -75,11 +76,14 @@ const MenuCard = ({ menuItem }) => {
           </p>
 
           {/* <Button>Add to Cart</Button> */}
-          <RiShoppingCart2Line
-            size={28}
-            className='text-primary cursor-pointer'
-            onClick={() => addToCart(menuItem)}
-          />
+          <div className='flex justify-between items-center gap-x-5'>
+            <MenuItemDialogue menuItem={menuItem} />
+            <RiShoppingCart2Line
+              size={28}
+              className='text-primary cursor-pointer'
+              onClick={() => addToCart(menuItem)}
+            />
+          </div>
         </div>
       </CardContent>
     </Card>

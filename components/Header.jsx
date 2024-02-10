@@ -63,7 +63,7 @@ const Header = () => {
             </Link>
             <Cart isPage={true} className={`cursor-pointer`} />
             <User2
-              size={24}
+              size={25}
               className={`cursor-pointer `}
               onClick={() => console.log('user')}
             />

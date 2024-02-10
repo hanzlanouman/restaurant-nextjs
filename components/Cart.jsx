@@ -94,7 +94,7 @@ const Cart = ({ isPage }) => {
         '
       >
         <SheetTrigger asChild>
-          <ShoppingBag className={`cursor-pointer`} size={30} />
+          <ShoppingBag className={`cursor-pointer`} size={25} />
         </SheetTrigger>
         <SheetContent side={isPage ? 'right' : 'left'} className=''>
           <div className='flex flex-col items-center justify-between h-full py-8 '>
