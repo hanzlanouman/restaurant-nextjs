@@ -21,9 +21,9 @@ const AdminCardSidebar = async ({ displayStyles }) => {
         </div>
       </div>
       <div>
-        {/* <SignOutButton className='bg-transparent text-sp_orange rounded-full hover:bg-transparent transition-all duration-300 text-base'>
+        <SignOutButton className='bg-transparent text-sp_orange rounded-full hover:bg-transparent transition-all duration-300 text-base'>
           Logout
-        </SignOutButton> */}
+        </SignOutButton>
       </div>
     </div>
   );
