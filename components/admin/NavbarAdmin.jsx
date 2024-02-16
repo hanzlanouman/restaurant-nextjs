@@ -7,21 +7,29 @@ import {
   RiTaskLine,
 } from 'react-icons/ri';
 import MobileSideNav from './MobileSideNav';
+import { Ubuntu } from 'next/font/google';
+const ubuntu = Ubuntu({
+  subsets: ['latin'],
+  weight: ['400', '300', '500', '700'],
+  display: 'swap',
+});
 
 const NavbarAdmin = () => {
   return (
-    <div className='flex text-white items-center justify-between bg-zinc-900 py-4'>
+    <div
+      className={`flex text-white items-center justify-between bg-zinc-900 py-4 ${ubuntu.className}`}
+    >
       <MobileSideNav displayStyle='xl:hidden px-4' />
       <div
         className='w-[320px]  bg-zinc-900  text-center items-center hidden xl:block
       '
       >
         <h1
-          className={`h2 text-primary  font-semibold  text-3xl dark:text-white cursor-pointer tracking-tight xl:tracking-wider text-center`}
+          className={`text-primary  font-base  text-3xl dark:text-white cursor-pointer tracking-tight xl:tracking-wide text-center`}
         >
           dashboard
           <span
-            className='text-sp_orange font-black text-4xl dark:text-primary transform rotate-12 transition-all duration-300 ease-in-out hover:text-primary hover:rotate-0
+            className='text-sp_orange font-semibold text-4xl dark:text-primary transform rotate-12 transition-all duration-300 ease-in-out hover:text-primary hover:rotate-0
     '
           >
             .

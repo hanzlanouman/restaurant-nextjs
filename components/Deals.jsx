@@ -97,6 +97,9 @@ const Deals = () => {
                   slidesPerView: 2,
                 },
               }}
+              style={{
+                '--swiper-pagination-color': '#fff',
+              }}
               spaceBetween={30}
               modules={[Pagination]}
               pagination={{ clickable: true }}

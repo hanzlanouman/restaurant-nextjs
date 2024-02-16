@@ -1,6 +1,7 @@
+import SetMenu from '@/components/admin/SetMenu';
 import React from 'react';
 
-const SetMenu = () => {
+const SetMenuPage = () => {
   const data = [
     {
       title: 'Burger',
@@ -22,10 +23,11 @@ const SetMenu = () => {
     },
   ];
   return (
-    <div className='bg-zinc-800 p-4'>
+    <div className='bg-zinc-800 p-4 '>
       <h1 className='text-3xl font-bold text-white'>Set Menu</h1>
+      <SetMenu />
     </div>
   );
 };
 
-export default SetMenu;
+export default SetMenuPage;
