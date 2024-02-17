@@ -6,6 +6,7 @@ import { RiEdit2Line } from 'react-icons/ri';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import DeleteButton from './DeleteButton';
 
 const SetMenu = () => {
   const router = useRouter();
@@ -22,7 +23,8 @@ const SetMenu = () => {
           throw new Error("Failed to fetch menu items");
         }
         const data = await res.json();
-        setMenuItems(data.MenuItems || []);
+        setMenuItems(data || []);
+        
       } catch (error) {
         console.error("Error loading items:", error);
       }
@@ -65,9 +67,10 @@ const SetMenu = () => {
               />
               <div className='flex gap-x-2'>
                 <RiEdit2Line className='text-2xl cursor-pointer'
-                 onClick={() => router.push('/setmenu/EditMenu')}
+                 onClick={() => router.push(`/setmenu/EditMenu/${item._id}`)}
                  />
-                <Trash className='text-2xl cursor-pointer' />
+                 <DeleteButton id={item._id} />
+                                 
               </div>
             </div>
           </div>

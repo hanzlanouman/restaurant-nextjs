@@ -1,36 +1,33 @@
-'use client';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
-const EditItemsForm = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
+const EditItemsForm = ({title, description, price, image}) => {
+    console.log(title, description, price, image);
+  const [newtitle, setTitle] = useState(title);
+  const [newdescription, setDescription] = useState(description);
+  const [newprice, setPrice] = useState(price);
+  const [newimage, setImage] = useState(image);
 
   const form = useForm();
-
+ const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !description || !price || !image) {
-      alert('Please fill all the fields');
-      return;
-    }
-
     try {
-      const res = await fetch('/apis/MenuItems', {
-        method: 'POST',
+      const res = await fetch(`http://localhost:3000/apis/MenuItems/${id}`
+      , {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title, description, price, image }),
+        body: JSON.stringify({ newtitle, newdescription, newprice, newimage }),
       });
 
       if (!res.ok) {
         throw new Error('Failed to add product');
       }
-
+      router.push('/setmenu');
       alert('Product added successfully');
     } catch (error) {
       console.error('Error adding product', error);
@@ -54,7 +51,7 @@ const EditItemsForm = () => {
               placeholder='Product Title'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setTitle(e.target.value)}
-              value={title}
+              value={newtitle}
             />
           </div>
           <div>
@@ -63,7 +60,7 @@ const EditItemsForm = () => {
               placeholder='Product Description'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setDescription(e.target.value)}
-              value={description}
+              value={newdescription}
             />
           </div>
           <div>
@@ -73,7 +70,7 @@ const EditItemsForm = () => {
               placeholder='Product Price'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setPrice(e.target.value)}
-              value={price}
+              value={newprice}
             />
           </div>
           <div>
@@ -83,7 +80,7 @@ const EditItemsForm = () => {
               placeholder='Product Image URL'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setImage(e.target.value)}
-              value={image}
+              value={newimage}
             />
           </div>
         </div>

@@ -15,7 +15,7 @@ export const GET=async()=>{
     return NextResponse.json(MenuItems);
 }
 
-export const Delete=async(req)=>{
+export const DELETE=async(req)=>{
     const id= req.nextUrl.searchParams.get("id");
     await ConnectMongoDB();
     await MenuItem.findByIdAndDelete(id);
