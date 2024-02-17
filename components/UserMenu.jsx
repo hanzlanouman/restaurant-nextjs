@@ -112,7 +112,7 @@ const menuItems = [
   },
 ];
 
-const Menu = () => {
+const UserMenu = () => {
   return (
     <section className={`bg-zinc-800 ${ubuntu.className} py-16`}>
       {/* Main Wrapper */}
@@ -159,4 +159,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default UserMenu;

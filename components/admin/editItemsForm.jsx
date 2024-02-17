@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const AddItemsForm = () => {
+const EditItemsForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -45,7 +45,7 @@ const AddItemsForm = () => {
       <div className='flex flex-col space-y-4 w-full  xl:max-w-[450px] rounded-xl bg-zinc-800 p-8 shadow-2xl '>
         <div className='flex flex-col space-y-4'>
           <h1 className='text-4xl font-semibold text-primary text-center xl:text-left md:text-left'>
-            Add Items
+            Edit Items
           </h1>
           <div>
             <label className='block mb-2'>Title</label>
@@ -101,4 +101,4 @@ const AddItemsForm = () => {
   );
 };
 
-export default AddItemsForm;
+export default EditItemsForm;

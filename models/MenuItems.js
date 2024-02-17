@@ -1,5 +1,5 @@
-import {mongoose, Shema} from 'mongoose';
-const MenuItemsShema = new Shema({
+import {mongoose, Schema} from 'mongoose';
+const MenuItemsSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -12,11 +12,12 @@ const MenuItemsShema = new Shema({
         type: Number,
         required: true
     },
-    images: 
-        {
-          url: { type: String, required: true },
-          id: { type: String, required: true },
-        },
+    image: {
+        type: String,
+        required: true}
+      
 });
-const MenuItems = mongoose.models.MenuItems || mongoose.model('MenuItems', MenuItemsShema); 
-export default MenuItems;
+const MenuItem = mongoose.models.MenuItem || mongoose.model('MenuItems', MenuItemsSchema);
+export default MenuItem;
+
+// mongoose.models.MenuItem ||
