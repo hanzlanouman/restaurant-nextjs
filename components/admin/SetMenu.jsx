@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import DeleteButton from './DeleteButton';
 
-const SetMenu = ({ MenuItems=[] }) => {
+const SetMenu = ({ MenuItems }) => {
   const router = useRouter();
   console.log(MenuItems);
   // const [MenuItems, setMenuItems] = useState([]);
@@ -22,7 +22,7 @@ const SetMenu = ({ MenuItems=[] }) => {
   //         throw new Error("Failed to fetch menu items");
   //       }
   //       const data = await res.json();
-  //       setMenuItems(data || []); 
+  //       setMenuItems(data || []);
   //     } catch (error) {
   //       console.error("Error loading items:", error);
   //     }
@@ -35,7 +35,8 @@ const SetMenu = ({ MenuItems=[] }) => {
         <h1 className='text-xl font-bold mx-4 text-zinc-300'>Menu Items</h1>
         <Button
           className='bg-transparent hover:bg-transparent hover:text-primary ease-in-out duration-700 text-lg text-sp_orange w-[160px] rounded-lg p-2 '
-          onClick={() => router.push('/setmenu/addMenu')}>
+          onClick={() => router.push('/setmenu/addMenu')}
+        >
           <PlusIcon className='text-2xl ml-2' /> Add Item
         </Button>
       </div>
@@ -51,7 +52,9 @@ const SetMenu = ({ MenuItems=[] }) => {
           <div key={index} className='py-4 border-b border-muted-foreground'>
             <div className='flex justify-between items-center'>
               <p className='font-semibold hidden xl:block'>{index + 1}</p>
-              <h1 className='font-bold line-clamp-1 w-24 xl:w-64'>{item.title}</h1>
+              <h1 className='font-bold line-clamp-1 w-24 xl:w-64'>
+                {item.title}
+              </h1>
               <p className='font-semibold w-24'>${item.price}</p>
               <Image
                 src={item.image}
@@ -61,11 +64,11 @@ const SetMenu = ({ MenuItems=[] }) => {
                 className='object-cover w-16 h-16 rounded-sm hidden xl:block'
               />
               <div className='flex gap-x-2'>
-                <RiEdit2Line className='text-2xl cursor-pointer'
-                 onClick={() => router.push(`/setmenu/EditMenu/${item._id}`)}
-                 />
-                 <DeleteButton id={item._id} />
-                                 
+                <RiEdit2Line
+                  className='text-2xl cursor-pointer'
+                  onClick={() => router.push(`/setmenu/EditMenu/${item._id}`)}
+                />
+                <DeleteButton id={item._id} />
               </div>
             </div>
           </div>
