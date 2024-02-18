@@ -9,7 +9,7 @@ export const POST=async(req)=>{
     return NextResponse.json({message:'Menu Item Created'});
 }
 
-export const GET=async()=>{
+export const GET=async(req)=>{
     await ConnectMongoDB();
     const MenuItems =await MenuItem.find({});
     return NextResponse.json(MenuItems);

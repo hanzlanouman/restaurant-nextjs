@@ -8,39 +8,34 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import DeleteButton from './DeleteButton';
 
-const SetMenu = () => {
+const SetMenu = ({ MenuItems=[] }) => {
   const router = useRouter();
-  const [MenuItems, setMenuItems] = useState([]);
-
-  useEffect(() => {
-    const fetchMenuItems = async () => {
-
-      try {
-        const res = await fetch("http://localhost:3000/apis/MenuItems", {
-          cache: "no-cache",
-        });
-        if (!res.ok) {
-          throw new Error("Failed to fetch menu items");
-        }
-        const data = await res.json();
-        setMenuItems(data || []);
-        
-      } catch (error) {
-        console.error("Error loading items:", error);
-      }
-    };
-
-    fetchMenuItems();
-  }, []);
-
+  console.log(MenuItems);
+  // const [MenuItems, setMenuItems] = useState([]);
+  // useEffect(() => {
+  //   const fetchMenuItems = async () => {
+  //     try {
+  //       const res = await fetch("http://localhost:3000/apis/MenuItems", {
+  //         cache: "no-cache",
+  //       });
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch menu items");
+  //       }
+  //       const data = await res.json();
+  //       setMenuItems(data || []); 
+  //     } catch (error) {
+  //       console.error("Error loading items:", error);
+  //     }
+  //   };
+  //   fetchMenuItems();
+  // }, []);
   return (
     <div className='flex flex-col mx-10 my-6 gap-y-2 h-[77.7vh] '>
       <div className='flex items-center justify-between'>
         <h1 className='text-xl font-bold mx-4 text-zinc-300'>Menu Items</h1>
         <Button
           className='bg-transparent hover:bg-transparent hover:text-primary ease-in-out duration-700 text-lg text-sp_orange w-[160px] rounded-lg p-2 '
-          onClick={() => router.push('/setmenu/addMenu')}
-        >
+          onClick={() => router.push('/setmenu/addMenu')}>
           <PlusIcon className='text-2xl ml-2' /> Add Item
         </Button>
       </div>

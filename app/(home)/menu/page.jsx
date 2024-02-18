@@ -1,10 +1,10 @@
 import React from 'react';
-import Menu from '@/components/UserMenu';
+import UserMenu from '@/components/UserMenu';
 
 const MenuPage = () => {
   return (
     <div>
-      <Menu />
+      <UserMenu />
     </div>
   );
 };
