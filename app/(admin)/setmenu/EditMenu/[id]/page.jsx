@@ -4,7 +4,7 @@ import EditItemsForm from '@/components/admin/EditItemsForm';
 const fetchMenuItem = async (id) => {
   if (id) {
     try {
-      const res = await fetch(`/apis/MenuItems/${id}`, {
+      const res = await fetch(`http://localhost:3000/apis/MenuItems/${id}`, {
         cache: 'no-cache',
       });
       if (!res.ok) {
