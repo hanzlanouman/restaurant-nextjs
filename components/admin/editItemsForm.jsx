@@ -1,39 +1,38 @@
+'use client'
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
-const EditItemsForm = ({title, description, price, image}) => {
-    console.log(title, description, price, image);
-  const [newtitle, setTitle] = useState(title);
-  const [newdescription, setDescription] = useState(description);
-  const [newprice, setPrice] = useState(price);
-  const [newimage, setImage] = useState(image);
+const EditItemsForm = ({ MenuItem =[] }) => {
+  const { title, description, image,price} = MenuItem;
+  const [newTitle, setTitle] = useState(title);
+  const [newDescription, setDescription] = useState(description);
+  const [newPrice, setPrice] = useState(price);
+  const [newImage, setImage] = useState(image);
 
-  const form = useForm();
- const router = useRouter();
+  const router = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const res = await fetch(`http://localhost:3000/apis/MenuItems/${id}`
-      , {
+      const res = await fetch(`/apis/MenuItems/${id}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ newtitle, newdescription, newprice, newimage }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: newTitle,
+          description: newDescription,
+          price: newPrice,
+          image: newImage,
+        }),
       });
-
       if (!res.ok) {
-        throw new Error('Failed to add product');
+        throw new Error('Failed to update product');
       }
+      alert('Product updated successfully');
       router.push('/setmenu');
-      alert('Product added successfully');
     } catch (error) {
-      console.error('Error adding product', error);
+      console.error('Error updating product:', error);
     }
   };
-
   return (
     <div className='flex justify-center items-center'>
     <form onSubmit={handleSubmit}
@@ -51,7 +50,7 @@ const EditItemsForm = ({title, description, price, image}) => {
               placeholder='Product Title'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setTitle(e.target.value)}
-              value={newtitle}
+              value={newTitle}
             />
           </div>
           <div>
@@ -60,7 +59,7 @@ const EditItemsForm = ({title, description, price, image}) => {
               placeholder='Product Description'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setDescription(e.target.value)}
-              value={newdescription}
+              value={newDescription}
             />
           </div>
           <div>
@@ -70,7 +69,7 @@ const EditItemsForm = ({title, description, price, image}) => {
               placeholder='Product Price'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setPrice(e.target.value)}
-              value={newprice}
+              value={newPrice}
             />
           </div>
           <div>
@@ -80,7 +79,7 @@ const EditItemsForm = ({title, description, price, image}) => {
               placeholder='Product Image URL'
               className='text-white bg-zinc-900 w-full p-2'
               onChange={(e) => setImage(e.target.value)}
-              value={newimage}
+              value={newImage}
             />
           </div>
         </div>

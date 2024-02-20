@@ -10,7 +10,7 @@ export const PUT = async (req, {params}) => {
     (id,{title,description,price,image});
     return NextResponse.json({message:'Menu Item Updated'});
 }
-export const GET = async (request, {params}) => {
+export const GET = async (req, {params}) => {
     const {id}=params;
     await ConnectMongoDB();
     const menuItems = await MenuItem.find({_id:id});

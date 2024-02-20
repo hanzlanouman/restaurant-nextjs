@@ -2,6 +2,7 @@ import SetMenu from '@/components/admin/SetMenu';
 import React from 'react';
 import ConnectMongoDB from '@/lib/MongoDB';
 import MenuItem from '@/models/MenuItems';
+
 const fetchMenuItems = async () => {
   try {
     await ConnectMongoDB();

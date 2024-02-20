@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import DeleteButton from './DeleteButton';
 
-const SetMenu = ({ MenuItems }) => {
+const SetMenu = ({ MenuItems =[]}) => {
   const router = useRouter();
   console.log(MenuItems);
   // const [MenuItems, setMenuItems] = useState([]);
