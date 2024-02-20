@@ -10,10 +10,8 @@ export const POST = async (req) => {
 };
 
 export const GET = async (req) => {
-  console.log('HIT');
   await ConnectMongoDB();
   const MenuItems = await MenuItem.find({});
-  console.log('API', MenuItems);
   return NextResponse.json(MenuItems);
 };
 
