@@ -1,5 +1,5 @@
 import React from 'react';
-import EditItemsForm from '@/components/admin/EditItemsForm';
+import EditItemsForm from '@/components/admin/editItemsForm';
 import ConnectMongoDB from '@/lib/MongoDB';
 import MenuItem from '@/models/MenuItems';
 const fetchMenuItem = async (id) => {
