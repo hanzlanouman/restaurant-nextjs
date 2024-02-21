@@ -1,8 +1,7 @@
-'use client';
+'use server';
 import AddItemsForm from '@/components/admin/addItemsForm';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { getCloudSignature, getCloudConfig } from '@/lib/helpers';
+import React from 'react';
+import { getCloudConfig, getCloudSignature } from '@/app/action';
 
 const uploadImage = async (file) => {
   const { signature, timestamp } = await getCloudSignature();
@@ -31,7 +30,7 @@ const uploadImage = async (file) => {
 const AddItems = () => {
   return (
     <div className='flex justify-center items-center bg-zinc-800 w-full py-4'>
-      <AddItemsForm uploadImage={uploadImage} />
+      <AddItemsForm />
     </div>
   );
 };

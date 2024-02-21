@@ -1,20 +1,46 @@
 'use client';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { getCloudSignature, getCloudConfig } from '@/lib/helpers';
 
+const uploadImage = async (file) => {
+  const { signature, timestamp } = await getCloudSignature();
+  const cloudConfig = await getCloudConfig();
+  const formData = new FormData();
+
+  formData.append('file', file);
+  formData.append('api_key', cloudConfig.key);
+  formData.append('timestamp', timestamp.toString());
+  formData.append('signature', signature);
+
+  const url = `https://api.cloudinary.com/v1_1/${cloudConfig.name}/action`;
+
+  const res = await fetch(url, {
+    method: 'POST',
+    body: formData,
+  });
+
+  const data = await res.json();
+
+  return {
+    url: data.secure_url,
+    id: data.public_id,
+  };
+};
 const AddItemsForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!title || !description || !price || !image) {
       alert('Please fill all the fields');
       return;
     }
+    const imageUrl = await uploadImage(image);
+    if (!imageUrl) return alert('Failed to upload image');
 
     try {
       const res = await fetch('/apis/MenuItems', {
@@ -22,7 +48,7 @@ const AddItemsForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title, description, price, image }),
+        body: JSON.stringify({ title, description, price, imageUrl }),
       });
       console.log(await res.json());
       if (!res.ok) {
@@ -76,14 +102,13 @@ const AddItemsForm = () => {
               />
             </div>
             <div>
-              <label className='block mb-2'>Image URL</label>
-              <input
-                type='text'
-                placeholder='Product Image URL'
-                className='text-white bg-zinc-900 w-full p-2'
-                onChange={(e) => setImage(e.target.value)}
-                value={image}
-              />
+              <label htmlFor='file'>
+                <input
+                  type='file'
+                  onChange={(e) => setImage(e.target.files[0])}
+                  accept='image/*'
+                />
+              </label>
             </div>
           </div>
           <div className='flex justify-end items-end'>
