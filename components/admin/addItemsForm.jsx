@@ -17,7 +17,7 @@ const AddItemsForm = () => {
     }
 
     try {
-      const res = await fetch('/apis/menuItems', {
+      const res = await fetch('/apis/MenuItems', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

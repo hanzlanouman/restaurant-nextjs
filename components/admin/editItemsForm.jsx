@@ -15,7 +15,7 @@ const EditItemsForm = ({ MenuItem }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`/apis/menuItems/${_id}`, {
+      const res = await fetch(`/apis/MenuItems/${_id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ const DeleteButton = ({ id }) => {
   const RemoveItem = async () => {
     const confirmed = confirm('Do you want to delete this Item?');
     if (confirmed) {
-      const res = await fetch(`/apis/menuItems?id=${id}`, {
+      const res = await fetch(`/apis/MenuItems?id=${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {
