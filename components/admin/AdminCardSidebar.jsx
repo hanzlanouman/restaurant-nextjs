@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { SignOutButton, currentUser } from '@clerk/nextjs';
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar';
 const AdminCardSidebar = async ({ displayStyles }) => {
