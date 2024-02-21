@@ -7,8 +7,8 @@ const fetchMenuItem = async (id) => {
     try {
       await ConnectMongoDB();
       const menuItems = await MenuItem.findById(id);
-      console.log(menuItems);
-      return menuItems;
+
+      return JSON.stringify(menuItems);
     } catch (error) {
       console.error('Error loading item:', error);
     }
@@ -17,10 +17,10 @@ const fetchMenuItem = async (id) => {
 const EditMenu = async ({ params }) => {
   const { id } = params;
   const menuItem = await fetchMenuItem(id);
-  console.log('Menu Item', menuItem);
+  const parsedMenuItem = JSON.parse(menuItem);
   return (
     <div className='flex justify-center items-center bg-zinc-800 w-full py-4'>
-      <EditItemsForm MenuItem={menuItem} />
+      <EditItemsForm MenuItem={parsedMenuItem} />
     </div>
   );
 };

@@ -6,6 +6,7 @@ export const POST = async (req) => {
   const { title, price, description, image } = await req.json();
   await ConnectMongoDB();
   await MenuItem.create({ title, price, description, image });
+  console.log('Menu Item Created');
   return NextResponse.json({ message: 'Menu Item Created' });
 };
 
@@ -20,4 +21,12 @@ export const DELETE = async (req) => {
   await ConnectMongoDB();
   await MenuItem.findByIdAndDelete(id);
   return NextResponse.json({ message: 'Menu Item Deleted' });
+};
+
+export const PUT = async (req) => {
+  console.log('Hit');
+  const { id, title, price, description, image } = await req.json();
+  await ConnectMongoDB();
+  await MenuItem.findByIdAndUpdate(id, { title, price, description, image });
+  return NextResponse.json({ message: 'Menu Item Updated' });
 };

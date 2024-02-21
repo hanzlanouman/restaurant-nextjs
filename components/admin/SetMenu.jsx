@@ -1,5 +1,5 @@
 'use client';
-import { PlusIcon, Trash } from 'lucide-react';
+import { Menu, PlusIcon, Trash } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import { RiEdit2Line } from 'react-icons/ri';
@@ -8,9 +8,9 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import DeleteButton from './DeleteButton';
 
-const SetMenu = ({ MenuItems =[]}) => {
+const SetMenu = ({ MenuItems = [] }) => {
   const router = useRouter();
-  console.log(MenuItems);
+  MenuItems = JSON.parse(MenuItems);
   // const [MenuItems, setMenuItems] = useState([]);
   // useEffect(() => {
   //   const fetchMenuItems = async () => {
